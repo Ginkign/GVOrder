@@ -1,0 +1,12 @@
+/www/dspt/user-service/src/main/java/com/example/userservice/config/WebConfig.java
+/www/dspt/user-service/src/main/java/com/example/userservice/controller/UserController.java
+/www/dspt/user-service/src/main/java/com/example/userservice/service/UserService.java
+/www/dspt/user-service/src/main/java/com/example/userservice/dto/LoginRequest.java
+/www/dspt/user-service/src/main/java/com/example/userservice/dto/AddressRequest.java
+/www/dspt/user-service/src/main/java/com/example/userservice/dto/RegisterRequest.java
+/www/dspt/user-service/src/main/java/com/example/userservice/entity/User.java
+/www/dspt/user-service/src/main/java/com/example/userservice/entity/Product.java
+/www/dspt/user-service/src/main/java/com/example/userservice/repository/UserRepository.java
+/www/dspt/user-service/src/main/java/com/example/userservice/repository/AddressRepository.java
+/www/dspt/user-service/src/main/java/com/example/userservice/entity/Address.java
+/www/dspt/user-service/src/main/java/com/example/userservice/UserServiceApplication.java

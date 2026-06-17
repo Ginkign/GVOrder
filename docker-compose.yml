@@ -1,0 +1,59 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      # 可选：创建默认数据库（但你的三个服务需要不同的库，所以用脚本更灵活）
+    ports:
+      - "3306:3306"
+    volumes:
+      # 挂载初始化脚本，容器启动时会自动执行（创建三个数据库）
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    # 健康检查（可选，有助于服务依赖顺序）
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$MYSQL_ROOT_PASSWORD"]
+      timeout: 10s
+      retries: 5
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      mysql:
+        condition: service_healthy   # 确保 MySQL 完全启动
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/user_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+      SERVICE_PRODUCT_URL: http://product-service:8082
+      SERVICE_USER_URL: http://user-service:8081
+      # 如果需要 Hibernate 自动建表，可添加：
+      # SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+  product-service:
+    build: ./product-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/product_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/order_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123456
+      SERVICE_PRODUCT_URL: http://product-service:8082
+      SERVICE_USER_URL: http://user-service:8081

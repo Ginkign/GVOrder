@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+    datasource:
+      url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/user_db}
+      username: ${SPRING_DATASOURCE_USERNAME:root}
+      password: ${SPRING_DATASOURCE_PASSWORD:123456}
+      driver-class-name: ${SPRING_DATASOURCE_DRIVER:com.mysql.cj.jdbc.Driver}
+  # datasource:
+  #   url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/user_db}
+  #   username: root
+  #   password: 123456
+  # jpa:
+  #   hibernate:
+  #     ddl-auto: update
+
+service:
+  product:
+    url: http://localhost:8082
+  user:
+    url: http://localhost:8081
+
+
+logging:
+  level:
+    org.hibernate: DEBUG
+    org.springframework.boot.autoconfigure.jdbc: DEBUG

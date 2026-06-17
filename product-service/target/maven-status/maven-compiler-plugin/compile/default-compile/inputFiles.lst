@@ -1,0 +1,8 @@
+/www/dspt/product-service/src/main/java/com/example/productservice/repository/ProductRepository.java
+/www/dspt/product-service/src/main/java/com/example/productservice/dto/ProductRequest.java
+/www/dspt/product-service/src/main/java/com/example/productservice/config/WebConfig.java
+/www/dspt/product-service/src/main/java/com/example/productservice/dto/InventoryRequest.java
+/www/dspt/product-service/src/main/java/com/example/productservice/service/ProductService.java
+/www/dspt/product-service/src/main/java/com/example/productservice/controller/ProductController.java
+/www/dspt/product-service/src/main/java/com/example/productservice/ProductServiceApplication.java
+/www/dspt/product-service/src/main/java/com/example/productservice/entity/Product.java

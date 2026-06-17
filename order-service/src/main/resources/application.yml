@@ -1,0 +1,34 @@
+# server:
+#   port: 8083
+
+# spring:
+#   datasource:
+#     url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/order_db}
+#     username: root
+#     password: 123456
+#   jpa:
+#     hibernate:
+#       ddl-auto: update
+
+# service:
+#   product:
+#     url: ${SERVICE_PRODUCT_URL:http://localhost:8082}
+#   user:
+#     url: ${SERVICE_USER_URL:http://localhost:8081}
+server:
+  port: 8083
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/order_db}
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+service:
+  product:
+    url: ${SERVICE_PRODUCT_URL:http://localhost:8082}
+  user:
+    url: ${SERVICE_USER_URL:http://localhost:8081}
