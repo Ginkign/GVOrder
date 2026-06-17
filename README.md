@@ -1,4 +1,4 @@
-# dspt 微服务示例 — 构建与运行说明（详细）
+#  微服务示例 — 构建与运行说明（详细）
 
 简要：本目录包含 3 个最小 Spring Boot 服务示例：`user-service`（8081）、`product-service`（8082）、`order-service`（8083）。示例编排文件位于 `docker-compose.yml`。
 
